@@ -55,10 +55,10 @@ def test_fattree_generator(size):
     assert topo.num_nodes() == 5 * (size ** 2) / 4  # \frac{5}{4} \times size^2
     G = topo.get_graph()
     # every node has a layer attribute
-    assert all([u'layer' in G.node[n] for n in G.nodes()])
+    assert all([u'layer' in G.nodes[n] for n in G.nodes()])
     # there are correct number of core switches
     assert len([n for n in G.nodes() if
-                G.node[n][u'layer'] == CORE_LAYER]) == size ** 2 / 4
+                G.nodes[n][u'layer'] == CORE_LAYER]) == size ** 2 / 4
     assert all([u'capacitymult' in G.edges[link] for link in G.edges()])
 
 
